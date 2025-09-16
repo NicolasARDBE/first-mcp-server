@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "A simple calculator server using Model Context Protocol",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.16.0",
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "undici": "^7.16.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
