@@ -7,16 +7,6 @@ A simple MCP (Model Context Protocol) server implemented in TypeScript.
 - API tool integration
 - Easy to extend and customize
 
-## Project Structure
-```
-├── package.json
-├── tsconfig.json
-├── build/
-│   └── index.js
-├── src/
-│   └── index.ts
-```
-
 ## Getting Started
 
 ### Prerequisites
@@ -25,6 +15,8 @@ A simple MCP (Model Context Protocol) server implemented in TypeScript.
 
 ### Installation
 ```bash
+git clone https://github.com/NicolasARDBE/first-mcp-server.git
+cd first-mcp-server
 npm install
 ```
 
@@ -34,16 +26,35 @@ npm run build
 ```
 
 ### Run
+#### Stdio:
 ```bash
-npm start
+npx @modelcontextprotocol/inspector node build/index.js
 ```
+#### Https server:
+```bash
+npx node build/https-server.js
+```
+### 🔌 Connect with MCP Client
 
-## Scripts
-- `npm run build` — Compiles TypeScript to JavaScript
-- `npm start` — Starts the server
+To connect an MCP client (like an LLM) to your MCP server, create a file called **`MCP.json`** and register your servers.
+
+#### Example `MCP.json`
+
+```json
+{
+  "servers": {
+    "firstServer": {
+      "command": "node",
+      "args": ["C:\\MCP\\calculator-server\\src\\index.ts"]
+    },
+    "firstHttpsServer": {
+      "url": "http://localhost:3000/mcp",
+      "type": "http"
+    }
+  },
+  "inputs": []
+}
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-This project is licensed under the MIT License.
