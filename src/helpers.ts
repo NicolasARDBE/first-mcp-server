@@ -3,7 +3,6 @@ import { setTimeout as delay } from "node:timers/promises";
 import { request } from "undici";
 
 // ---------- Config (env or defaults) ----------
-const BASE_URL = process.env.API_BASE_URL ?? "https://api.example.com";
 const API_TOKEN = process.env.API_TOKEN ?? ""; // e.g., "Bearer xyz"
 const DEFAULT_TIMEOUT_MS = Number(process.env.API_TIMEOUT_MS ?? 12000);
 const MAX_RETRIES = Number(process.env.API_MAX_RETRIES ?? 2);
@@ -19,16 +18,6 @@ export const redactHeaders = (headers: Record<string, string>) => {
   }
   return h;
 };
-
-// naive dot-path (supports a.b[0].c)
-export function getByDotPath(obj: unknown, path: string): unknown {
-  if (path === "" || path === ".") return obj;
-  return path
-    .replace(/\[(\d+)\]/g, ".$1")
-    .split(".")
-    .filter(Boolean)
-    .reduce<any>((acc, key) => (acc != null ? acc[key] : undefined), obj as any);
-}
 
 export function asJsonMaybe(text: string) {
   try { return JSON.parse(text); } catch { return undefined; }
