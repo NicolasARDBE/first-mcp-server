@@ -4,7 +4,7 @@ import { McpServer, ResourceTemplate } from "@modelcontextprotocol/sdk/server/mc
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 import { z } from "zod";
-import { httpCall, asJsonMaybe, getByDotPath, redactHeaders } from "./helpers.js";
+import { httpCall} from "./helpers.js";
 
 const app = express();
 app.use(express.json());
