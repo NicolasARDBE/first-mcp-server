@@ -30,9 +30,14 @@ npm run build
 ```bash
 npx @modelcontextprotocol/inspector node build/index.js
 ```
-#### Https server:
+#### Http server:
 ```bash
 npx node build/https-server.js
+```
+##### Docker
+```bash
+docker build -t my-mcp-server .
+-p 3000:3000 my-mcp-server
 ```
 ### 🔌 Connect with MCP Client
 
